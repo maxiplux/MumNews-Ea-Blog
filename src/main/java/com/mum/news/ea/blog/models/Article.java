@@ -20,7 +20,7 @@ public class Article {
     @Lob
     private String content;
 
-    private Date date;
+    private Date publicationDate;
 
     @ManyToOne
     private User author;
@@ -57,12 +57,12 @@ public class Article {
         this.content = content;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getPublicationDate() {
+        return publicationDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
     }
 
     public User getAuthor() {

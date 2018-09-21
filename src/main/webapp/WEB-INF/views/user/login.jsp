@@ -45,7 +45,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <div class="margin-top20 text-center"> Don't have an account?
+        <div class="margin-top20 text-center">  Don't have an account?
             <a href="/singup">Create an account</a>
         </div>
     </form:form>
