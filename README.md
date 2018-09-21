@@ -2,7 +2,9 @@
 Final project of Enterprise Architecture Course
 
 ## Features
- - Login + DB
+- DataBase and Entities
+
+- Login
 
 - MainPage - Post List
 	- Filters: Category, Date
@@ -22,12 +24,14 @@ Final project of Enterprise Architecture Course
   - Registration form
 
 
-## Main Project Features
+## Main Project Technologies
 	- Hibernate
 	- Paas(Spring cloud or Heroku)
  	- Unit Testing
  	- DB - MySql or PostgreSql
  	- Spring Security
  	- Spring Data
+	- Spring Boot
+	
  	- Spring Android (Optional)
  	- Boostrap (Optional)
