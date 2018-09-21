@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +7,10 @@
     <title>Title</title>
 </head>
 <body>
-Pachito!!
+
+<c:forEach var="article" items="${articles}">
+    ${article.title} <br>
+</c:forEach>
+
 </body>
 </html>
