@@ -18,22 +18,20 @@
     </layout:put>
     <layout:put block="content" type="REPLACE">
         <div>
-            <c:forEach var="article" items="${articles}">
-                <div>
-                    <img src="<c:url value="${article.image}"/>" height="200">
-                    <br/>
-                        ${article.category}
-                    <br/>
-                        ${article.title}
-                    <br/>
-                        ${article.publicationDate}
-                    <br>
-                        ${article.author}
-                    <br>
-                        ${article.content}
-                    <br>
-                </div>
-            </c:forEach>
+
+            <img src="<c:url value="${article.image}"/>" height="200">
+            <br/>
+                ${article.category}
+            <br/>
+                ${article.title}
+            <br/>
+                ${article.publicationDate}
+            <br>
+                ${article.author}
+            <br>
+                ${article.content}
+            <br>
+        </div>
         </div>
     </layout:put>
 </layout:extends>
