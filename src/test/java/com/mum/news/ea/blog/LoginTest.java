@@ -57,73 +57,73 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @WebMvcTest(controllers = { UserController.class } , secure = false)
 //@AutoConfigureMockMvc
 public class LoginTest {
-//    private MockMvc mockMvc;
-//
-//
-//    @MockBean
-//    private FilterChainProxy springSecurityFilterChain;
-//
-//
-//    @MockBean
-//    private UserService userService;
-//
-//    public LoginTest() {
-//    }
-//
-//    @Autowired
-//    private WebApplicationContext webApplicationContext;
-//
-//
-//    @Before
-//    public void setUp() {
-//        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-//    }
-//    @Test
-//    public void testInitial() throws Exception {
+    private MockMvc mockMvc;
+
+
+    @MockBean
+    private FilterChainProxy springSecurityFilterChain;
+
+
+    @MockBean
+    private UserService userService;
+
+    public LoginTest() {
+    }
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+
+    @Before
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
+    @Test
+    public void testInitial() throws Exception {
+        assertThat(this.userService).isNotNull();
+        mockMvc.perform(MockMvcRequestBuilders.get("/login"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("user/login"))
+                .andExpect(MockMvcResultMatchers.view().name("user/login"))
+                //.andExpect(content().string(Matchers.containsString("email")))
+                .andDo(print());
+    }
+
+    @Test
+    public void testFormError() throws Exception {
+
+        RequestBuilder requestBuilder = formLogin().user("edwin@gmail.com").password("xjuanjuan");
+        MockMvcBuilders.webAppContextSetup(webApplicationContext)
+                .addFilter(springSecurityFilterChain)
+                .build()
+                .perform(requestBuilder)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(cookie().doesNotExist("JSESSIONID"));
+
+
+//        MvcResult result= mockMvc.perform(get("/product/{id}/", 1))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("productshow"))
+//                .andExpect(MockMvcResultMatchers.model().attributeExists("product"))
+//                .andExpect(model().attribute("product", hasProperty("id", is(1))))
+//                .andExpect(model().attribute("product", hasProperty("productId", is("235268845711068308"))))
+//                .andExpect(model().attribute("product", hasProperty("description", is("Spring Framework Guru Shirt"))))
+//                .andExpect(model().attribute("product", hasProperty("price", is(new BigDecimal("18.95")))))
+//                .andExpect(model().attribute("product", hasProperty("imageUrl", is("https://springframework.guru/wp-content/uploads/2015/04/spring_framework_guru_shirt-rf412049699c14ba5b68bb1c09182bfa2_8nax2_512.jpg"))))
+//                .andReturn();
 //        assertThat(this.userService).isNotNull();
-//        mockMvc.perform(MockMvcRequestBuilders.get("/login"))
+        //https://javatalks.ru/topics/44989
+
+
+//        mockMvc.perform(post("/login").param("email", "edwin@gmail.com").param("password", "test description"))
 //                .andExpect(status().isOk())
-//                .andExpect(view().name("user/login"))
+        //                .andExpect(view().name("user/login"))
 //                .andExpect(MockMvcResultMatchers.view().name("user/login"))
-//                //.andExpect(content().string(Matchers.containsString("email")))
+                //.andExpect(content().string(Matchers.containsString("email")))
 //                .andDo(print());
-//    }
-//
-//    @Test
-//    public void testFormError() throws Exception {
-//
-//        RequestBuilder requestBuilder = formLogin().user("edwin@gmail.com").password("xjuanjuan");
-//        MockMvcBuilders.webAppContextSetup(webApplicationContext)
-//                .addFilter(springSecurityFilterChain)
-//                .build()
-//                .perform(requestBuilder)
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andExpect(cookie().doesNotExist("JSESSIONID"));
-//
-//
-////        MvcResult result= mockMvc.perform(get("/product/{id}/", 1))
-////                .andExpect(status().isOk())
-////                .andExpect(view().name("productshow"))
-////                .andExpect(MockMvcResultMatchers.model().attributeExists("product"))
-////                .andExpect(model().attribute("product", hasProperty("id", is(1))))
-////                .andExpect(model().attribute("product", hasProperty("productId", is("235268845711068308"))))
-////                .andExpect(model().attribute("product", hasProperty("description", is("Spring Framework Guru Shirt"))))
-////                .andExpect(model().attribute("product", hasProperty("price", is(new BigDecimal("18.95")))))
-////                .andExpect(model().attribute("product", hasProperty("imageUrl", is("https://springframework.guru/wp-content/uploads/2015/04/spring_framework_guru_shirt-rf412049699c14ba5b68bb1c09182bfa2_8nax2_512.jpg"))))
-////                .andReturn();
-////        assertThat(this.userService).isNotNull();
-//        //https://javatalks.ru/topics/44989
-//
-//
-////        mockMvc.perform(post("/login").param("email", "edwin@gmail.com").param("password", "test description"))
-////                .andExpect(status().isOk())
-//        //                .andExpect(view().name("user/login"))
-////                .andExpect(MockMvcResultMatchers.view().name("user/login"))
-//                //.andExpect(content().string(Matchers.containsString("email")))
-////                .andDo(print());
-//
-//
-//
-//    }
+
+
+
+    }
 }
