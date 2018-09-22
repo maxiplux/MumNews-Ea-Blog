@@ -5,9 +5,10 @@ jdk: oraclejdk8
 
 services:
 - mysql
-- wiad5ra41q8129zn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+
 hosts:
   - mysql
+  - wiad5ra41q8129zn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
 apt:
     packages:
     - oracle-java8-installer
