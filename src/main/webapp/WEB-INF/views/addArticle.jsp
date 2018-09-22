@@ -8,23 +8,23 @@
     <table>
         <tr>
             <td>Title:</td>
-            <td><input type="text" name="title" /> </td>
+            <td><input type="text" name="title"/></td>
         </tr>
         <tr>
             <td>Content:</td>
-            <td><textarea name="content" id="content1" cols="30" rows="10"></textarea> </td>
+            <td><textarea name="content" id="content1" cols="30" rows="10"></textarea></td>
         </tr>
         <tr>
             <td>Date:</td>
-            <td><input type="text" name="date" /> </td>
+            <td><input type="text" name="date"/></td>
         </tr>
         <tr>
             <td>category:</td>
-            <td><input type="text" name= "Category" /> </td>
+            <td><input type="text" name="Category"/></td>
         </tr>
         <tr>
             <td>Image:</td>
-            <td><input type="text" name= "image" /> </td>
+            <td><input type="text" name="image"/></td>
         </tr>
     </table>
 

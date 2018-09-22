@@ -5,23 +5,19 @@ package com.mum.news.ea.blog.models;
  * Date: 21/09/2018
  * Time: 3:44
  */
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 
 @Entity
 public class Role {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="role_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private int id;
 
-    @Column(name="role")
+    @Column(name = "role")
     private String role;
 
     public int getId() {

@@ -3,11 +3,6 @@ package com.mum.news.ea.blog.models;
 import javax.persistence.*;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  * User: franc
  * Date: 21/09/2018
@@ -19,7 +14,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
 
 
     @Column(name = "email")
@@ -37,12 +31,9 @@ public class User {
     @Column(name = "active")
     private int active;
 
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
-
-
 
 
     public String getEmail() {

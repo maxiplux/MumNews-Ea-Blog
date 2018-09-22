@@ -4,7 +4,6 @@ import com.mum.news.ea.blog.models.Article;
 import com.mum.news.ea.blog.repositories.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Time: 2:43
  */
 
-public interface CreateArticleController  {
+public interface CreateArticleController {
 
     @Autowired
     public ArticleDao articleDao = null;

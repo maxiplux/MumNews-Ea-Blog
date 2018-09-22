@@ -5,6 +5,7 @@ package com.mum.news.ea.blog.repositories;
  * Date: 21/09/2018
  * Time: 3:49
  */
+
 import com.mum.news.ea.blog.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

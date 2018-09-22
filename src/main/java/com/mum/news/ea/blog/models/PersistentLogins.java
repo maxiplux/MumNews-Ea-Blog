@@ -1,9 +1,6 @@
 package com.mum.news.ea.blog.models;
 
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -23,6 +20,11 @@ public class PersistentLogins {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date last_used;
+
+    public PersistentLogins() {
+
+
+    }
 
     public String getUsername() {
         return username;
@@ -54,10 +56,5 @@ public class PersistentLogins {
 
     public void setLast_used(Date last_used) {
         this.last_used = last_used;
-    }
-
-    public PersistentLogins() {
-
-
     }
 }
