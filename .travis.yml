@@ -19,7 +19,7 @@ deploy:
   provider: heroku
   api_key:
     secure: $HEROKU_API_KEY
-  app: springbootmum
+  app: springbootmum2
 
 script:
 #- ./mvnv verify -B
@@ -31,3 +31,4 @@ notifications:
  - maxiplux@gmail.com
  on_success: always # default: change
  on_failure: always
+# if exists problems with mvnw try on local mvn -N io.takari:maven:wrapper
