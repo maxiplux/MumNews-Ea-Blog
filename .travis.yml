@@ -11,9 +11,9 @@ services:
     packages:
     - oracle-java8-installer
 before_install:
-- chmod a+x ./mvnw
-- mysql -e 'create database project;'
-- echo "USE mysql;\nUPDATE user SET password=PASSWORD('') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+  - chmod a+x ./mvnw
+  - mysql -e 'create database project;'
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
 
 
 deploy:
