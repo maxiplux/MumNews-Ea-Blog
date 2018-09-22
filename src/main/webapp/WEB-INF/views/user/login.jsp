@@ -19,6 +19,11 @@
 
     <div role="alert">
         <form:errors path="*" cssClass="alert alert-danger"/>
+
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid username and password.
+        </div>
+
     </div>
 
 
@@ -27,11 +32,11 @@
 
 
         <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
-        <label for="inputEmail" class="sr-only">Email</label>
+        <label for="email" class="sr-only">Email</label>
 
         <form:input path="email" class="form-control" placeholder="Email" required="required" autofocus="autofocus"/>
 
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="password" class="sr-only">Password</label>
 
         <form:password path="password" class="form-control" placeholder="Password" required="required"
                        autofocus="autofocus"/>
@@ -44,7 +49,7 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <div class="margin-top20 text-center"> Don't have an account?
-            <a href="/singup">Create an account</a>
+            <a href="/signup">Create an account</a>
         </div>
     </form:form>
 
