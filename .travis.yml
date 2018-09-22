@@ -5,6 +5,7 @@ jdk: oraclejdk8
 
 services:
 - mysql
+- wiad5ra41q8129zn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
 hosts:
   - mysql
 apt:
@@ -13,6 +14,9 @@ apt:
 before_install:
 - chmod a+x ./mvnw
 - mysql -e 'create database project;'
+- mysql -u root -e 'CREATE DATABASE sg9korhcwgsb7c02;'
+- mysql -u root -e "CREATE USER 'z14bh3wa1ze5rhwo'@'localhost' IDENTIFIED BY 'n5qh0cbk3uu0u80b';"
+- mysql -u root -e "GRANT ALL ON z14bh3wa1ze5rhwo.* TO 'sg9korhcwgsb7c02'@'localhost';"
 - echo "USE mysql;\nUPDATE user SET password=PASSWORD('') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
 
 deploy:
