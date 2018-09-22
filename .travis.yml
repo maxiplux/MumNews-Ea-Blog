@@ -24,7 +24,7 @@ deploy:
 script:
 #- ./mvnv verify -B
 #- ./mvnw  verify
-- ./mvnw clean verify install -B
+- ./mvn clean verify install -B
 notifications:
  emails:
  - maxiplux@gmail.com
