@@ -4,17 +4,14 @@ dist: trusty
 jdk: oraclejdk8
 
 services:
-  - mysql
-hosts:
+- postgresql
+  hosts:
   - postgres
   apt:
     packages:
     - oracle-java8-installer
 before_install:
-  - chmod a+x ./mvnw
-  - mysql -e 'create database project;'
-  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-
+- chmod a+x ./mvnw
 
 deploy:
   provider: heroku
@@ -26,14 +23,3 @@ script:
 #- ./mvnv verify -B
 #- ./mvnw  verify
 - ./mvnw clean verify install -B
-
-
-notifications:
-  emails:
-  - maxiplux@gmail.com
-  on_success: always # default: change
-  on_failure: always
-#sudo: required
-#services:
-#- docker
-
