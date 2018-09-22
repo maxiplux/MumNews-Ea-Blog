@@ -5,11 +5,11 @@ jdk: oraclejdk8
 
 services:
 - mysql
-- postgresql
+
 
 hosts:
   - mysql
-  - postgres
+
   - wiad5ra41q8129zn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
 apt:
     packages:
