@@ -5,9 +5,9 @@ jdk: oraclejdk8
 
 services:
 - postgresql
-  hosts:
+hosts:
   - postgres
-  apt:
+apt:
     packages:
     - oracle-java8-installer
 before_install:
