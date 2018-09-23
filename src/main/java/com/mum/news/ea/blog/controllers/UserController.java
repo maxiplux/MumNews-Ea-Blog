@@ -51,10 +51,12 @@ public class UserController {
         ModelAndView model = new ModelAndView();
         User userExists = this.userService.findUserByEmail(user.getEmail());
 
-        if (userExists != null) {
+        if (userExists != null)
+        {
             bindingResult.rejectValue("email", "error.user", "This email already exists!");
         }
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors())
+        {
             model.setViewName("user/signup");
         } else {
 
