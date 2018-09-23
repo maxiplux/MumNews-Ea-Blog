@@ -22,7 +22,7 @@
 <header>
     <layout:block name="header">
         <a href='<c:url value="/"/>'>
-            <img src="" alt="icon-EABlog"/>
+            <img src="/logo.png" alt="icon-EABlog" height="120"/>
             <h1>MUM News - EA Blog</h1>
         </a>
     </layout:block>
