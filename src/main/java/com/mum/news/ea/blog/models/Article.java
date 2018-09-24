@@ -1,6 +1,11 @@
 package com.mum.news.ea.blog.models;
 
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.sql.Blob;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -17,21 +22,20 @@ public class Article {
 
     private String title;
 
+    @ManyToOne
+    private Category category;
+
     @Lob
     private String content;
 
-    private Date publicationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@Temporal(TemporalType.DATE)
+    private LocalDate publicationDate;
 
     @ManyToOne
     private User author;
 
     private String image;
-
-    @ManyToOne
-    private Category category;
-
-    public Article() {
-    }
 
     public long getId() {
         return id;
@@ -39,6 +43,18 @@ public class Article {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Article() {
+    }
+
+    public Article(String title, Category category, String content, LocalDate publicationDate, User author, String image) {
+        this.title = title;
+        this.category = category;
+        this.content = content;
+        this.publicationDate = publicationDate;
+        this.author = author;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -57,11 +73,11 @@ public class Article {
         this.content = content;
     }
 
-    public Date getPublicationDate() {
+    public LocalDate getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(Date publicationDate) {
+    public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
     }
 
