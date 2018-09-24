@@ -66,6 +66,7 @@ public class CreateArticleController {
                                    @RequestParam("file") MultipartFile file, BindingResult result, Model model,
                                    RedirectAttributes redirectAttributes) {
 
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         User user = userDao.findByEmail(auth.getName());
