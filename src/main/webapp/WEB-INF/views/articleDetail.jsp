@@ -17,21 +17,21 @@
 
     </layout:put>
     <layout:put block="content" type="REPLACE">
-        <div>
-
-            <img src="<c:url value="${article.image}"/>" height="200">
-            <br/>
-                ${article.category}
-            <br/>
-                ${article.title}
-            <br/>
-                ${article.publicationDate}
-            <br>
-                ${article.author}
-            <br>
-                ${article.content}
-            <br>
-        </div>
+        <div class="container">
+            <div>
+                    ${article.title}
+                <br/>
+                <img src="<c:url value="${article.image}"/>" height="200">
+                <br/>
+                    ${article.category}
+                <br/>
+                    ${article.publicationDate}
+                <br>
+                    ${article.author}
+                <br>
+                    ${article.content}
+                <br>
+            </div>
         </div>
     </layout:put>
 </layout:extends>

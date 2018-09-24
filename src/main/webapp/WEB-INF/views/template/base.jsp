@@ -16,6 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='/style.css'/>"/>
     <layout:block name="styleLinks">
 
     </layout:block>
@@ -27,6 +28,11 @@
             <img src="/logo.png" alt="icon-EABlog" height="120"/>
             <h1>MUM News - EA Blog</h1>
         </a>
+        <div class="userHeader">
+            <c:if test="${currentUser != null}">
+                <span> Welcome <c:out value="${currentUser.firstname}"/> </span>
+            </c:if>
+        </div>
     </layout:block>
 </header>
 
@@ -38,19 +44,17 @@
 
 <footer>
     <layout:block name="footer">
-        <pre>
-        Copyright &copy;
-        <br/>
-        Theodros Mebratu
-        <br/>
-        Francisco Mosquera
-        <br/>
-        Edwin Alejandro Cobos Fonseca
-        <br/>
-        Maharishi University of Management
-        <br/>
-        Jai Guru Dev
-        </pre>
+Copyright &copy;
+<br/>
+Theodros Mebratu
+<br/>
+Francisco Mosquera
+<br/>
+Edwin Alejandro Cobos Fonseca
+<br/>
+Maharishi University of Management
+<br/>
+Jai Guru Dev
     </layout:block>
 </footer>
 </body>

@@ -2,9 +2,13 @@ package com.mum.news.ea.blog.controllers;
 
 import com.mum.news.ea.blog.models.Article;
 import com.mum.news.ea.blog.models.Category;
+import com.mum.news.ea.blog.models.User;
 import com.mum.news.ea.blog.repositories.ArticleDao;
 import com.mum.news.ea.blog.repositories.CategoryDao;
+import com.mum.news.ea.blog.repositories.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +30,16 @@ public class ReadArticleController {
     @Autowired
     CategoryDao categoryDao;
 
+    @Autowired
+    UserDao userDao;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(@RequestParam(value = "category", required = false, defaultValue = "-1") Long categoryId,
                         @RequestParam(value = "dateOrder", required = true, defaultValue = "asc") String dateOrder,
                         Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userDao.findByEmail(auth.getName());
+
         Optional<Category> categoryOptional = categoryDao.findById(categoryId);
         List<Article> articles;
         Category categorySelected;
@@ -51,6 +61,7 @@ public class ReadArticleController {
         model.addAttribute("articles", articles);
         model.addAttribute("categoryList", categoryDao.findAll());
         model.addAttribute("category", categorySelected);
+        model.addAttribute("currentUser", user);
         return "index";
     }
 

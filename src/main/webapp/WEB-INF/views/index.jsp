@@ -20,7 +20,7 @@
     </layout:put>
     <layout:put block="content" type="REPLACE">
         <div class="container">
-            <div>
+            <div class="menu">
                 <form:form method="GET" action="/">
                     <label for="category">Categories:</label>
                     <select id="category" name="category">
@@ -45,12 +45,12 @@
             </div>
             <div>
                 <c:forEach var="article" items="${articles}">
-                    <div>
+                    <div class="article">
                         <img src="<c:url value="${article.image}"/>" height="200">
                         <br/>
-                            ${article.category}
-                        <br/>
                         <a href="<c:url value="/article/${article.id}" />">${article.title}</a>
+                        <br/>
+                            ${article.category}
                         <br/>
                             ${article.publicationDate}
                         <br>

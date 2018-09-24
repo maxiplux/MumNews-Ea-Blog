@@ -1,0 +1,35 @@
+.menu {
+    background-color: #d6d6d6;
+    border: 1px solid;
+    border-radius: 9px;
+    padding: 5px;
+}
+
+.userHeader {
+    background-color: #5fadf9;
+    font-size: 20pt;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.article {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #e2e2e2;
+    border: 2px solid #a4a9a6;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+footer{
+    background-color: #5fadf9;
+    color: white;
+    text-align: center;
+}
+
+footer br{
+    height: 1px;
+    padding: 0px;
+    color: white;
+}
