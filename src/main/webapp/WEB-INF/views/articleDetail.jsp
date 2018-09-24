@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <layout:extends name="base">
     <layout:put block="titlePage" type="REPLACE">
@@ -33,6 +34,14 @@
                     ${article.content}
                 <br>
             </div>
+
+            <br>
+            <strong>New Comment:</strong>
+        <form:form method="post" action="/createComment" modelAttribute="comment">
+            <form:textarea cols="100" path="comment" required="required" title="New Comment"/>
+            <br>
+            <input type="submit" value="Add Comment"/>
+        </form:form>
         </div>
     </layout:put>
 </layout:extends>

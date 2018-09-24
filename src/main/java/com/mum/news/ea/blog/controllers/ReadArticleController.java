@@ -2,6 +2,7 @@ package com.mum.news.ea.blog.controllers;
 
 import com.mum.news.ea.blog.models.Article;
 import com.mum.news.ea.blog.models.Category;
+import com.mum.news.ea.blog.models.Comment;
 import com.mum.news.ea.blog.models.User;
 import com.mum.news.ea.blog.repositories.ArticleDao;
 import com.mum.news.ea.blog.repositories.CategoryDao;
@@ -72,6 +73,7 @@ public class ReadArticleController {
 
         model.addAttribute("article", this.articleDao.findById(id).get());
         model.addAttribute("currentUser", user);
+        model.addAttribute("comment", new Comment());
         return "articleDetail";
     }
 }
