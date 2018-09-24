@@ -31,6 +31,8 @@ public class UserController {
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
 
+
+
         ModelAndView model = new ModelAndView();
         model.addObject("user", new User());
         model.setViewName("user/login");
