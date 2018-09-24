@@ -1,6 +1,7 @@
 package com.mum.news.ea.blog.controllers;
 
 import com.mum.news.ea.blog.models.Article;
+import com.mum.news.ea.blog.models.Comment;
 import com.mum.news.ea.blog.models.User;
 import com.mum.news.ea.blog.repositories.ArticleDao;
 import com.mum.news.ea.blog.repositories.CategoryDao;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -91,6 +93,14 @@ public class CreateArticleController {
         Resource file = storageService.loadAsResource(filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+
+    @RequestMapping(value = {"/createArticle"}, method = RequestMethod.POST)
+    public ModelAndView createUser(@Valid Comment comment, BindingResult bindingResult) {
+        ModelAndView model = new ModelAndView();
+
+        return new ModelAndView("redirect:/");
+
     }
 }
 
