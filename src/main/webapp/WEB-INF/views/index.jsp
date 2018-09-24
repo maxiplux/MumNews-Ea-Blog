@@ -19,44 +19,48 @@
 
     </layout:put>
     <layout:put block="content" type="REPLACE">
-        <div>
-            <form:form method="GET" action="/">
-                <label for="category">Categories:</label>
-                <select id="category" name="category">
-                    <option value="0">All</option>
-                    <c:forEach var="cat" items="${categoryList}">
-                        <option value="${cat.id}" <c:if test="${category.id == cat.id}">selected</c:if>>${fn:toLowerCase(cat.name)}</option>
-                    </c:forEach>
-                </select>
+        <div class="container">
+            <div>
+                <form:form method="GET" action="/">
+                    <label for="category">Categories:</label>
+                    <select id="category" name="category">
+                        <option value="0">All</option>
+                        <c:forEach var="cat" items="${categoryList}">
+                            <option value="${cat.id}"
+                                    <c:if test="${category.id == cat.id}">selected</c:if>>${fn:toLowerCase(cat.name)}</option>
+                        </c:forEach>
+                    </select>
 
-                <label for="dateOrder">Order by Date:</label>
-                <select id="dateOrder" name="dateOrder">
-                    <option value="asc">Ascendant</option>
-                    <option value="desc">Descendant</option>
-                </select>
+                    <label for="dateOrder">Order by Date:</label>
+                    <select id="dateOrder" name="dateOrder">
+                        <option value="asc">Ascendant</option>
+                        <option value="desc">Descendant</option>
+                    </select>
 
-                <input type="submit" value="Filter">
-            </form:form>
-
-
-        </div>
-        <div>
-            <c:forEach var="article" items="${articles}">
+                    <input type="submit" value="Filter">
+                </form:form>
                 <div>
-                    <img src="<c:url value="${article.image}"/>" height="200">
-                    <br/>
-                        ${article.category}
-                    <br/>
-                    <a href="<c:url value="/article/${article.id}" />">${article.title}</a>
-                    <br/>
-                        ${article.publicationDate}
-                    <br>
-                        ${article.author.firstname}
-                    <br>
-                        ${article.content}
-                    <br>
+                    <a href="<c:url value="/create"/>">New Article</a>
                 </div>
-            </c:forEach>
+            </div>
+            <div>
+                <c:forEach var="article" items="${articles}">
+                    <div>
+                        <img src="<c:url value="${article.image}"/>" height="200">
+                        <br/>
+                            ${article.category}
+                        <br/>
+                        <a href="<c:url value="/article/${article.id}" />">${article.title}</a>
+                        <br/>
+                            ${article.publicationDate}
+                        <br>
+                            ${article.author.firstname}
+                        <br>
+                            ${article.content}
+                        <br>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
     </layout:put>
 </layout:extends>
