@@ -11,7 +11,7 @@
 
 <layout:extends name="base">
     <layout:put block="titlePage" type="REPLACE">
-        <c:out value="Login"/>
+        <c:out value="Article | ${article.title}"/>
     </layout:put>
     <layout:put block="styleLinks" type="REPLACE">
 
