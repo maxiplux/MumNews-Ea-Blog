@@ -24,7 +24,7 @@
                 <tr>
                     <div id=".section5">
                         <td>Title:</td>
-                        <td><p><input name="title" type="text"/></p></td>
+                        <td><p><input name="title" type="text" required="required" /></p></td>
                     </div>
                 </tr>
                 <br>
@@ -32,7 +32,7 @@
                     Category:
                     <div id=".section3">
                         <td>
-                            <select name="category">
+                            <select name="category" required="required">
                                 <c:forEach var="cat" items="${cateogories}">
                                     <option value="${cat.id}">${cat.name}</option>
                                 </c:forEach>
@@ -44,7 +44,7 @@
                 <tr>
                     <td>Content:</td>
                     <div id=".section2">
-                        <td><textarea name="content" id="content" cols="30" rows="10"></textarea></td>
+                        <td><textarea name="content" id="content" cols="30" rows="10" required="required" ></textarea></td>
                     </div>
                 </tr>
                 <br>
@@ -54,7 +54,7 @@
                     <td>Upload File:</td>
                         <%--<form action="/add/image" method="post" enctype="multipart/form-data">--%>
                     <div>
-                        <td id=".section4"><input type="file" name="file"/></td>
+                        <td id=".section4"><input required="required" type="file" name="file"/></td>
                     </div>
                         <%--<input type="submit" value="Upload" float:float:right/>--%>
                         <%--</form>--%>

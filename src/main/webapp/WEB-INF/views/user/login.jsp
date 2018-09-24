@@ -19,9 +19,16 @@
     <div role="alert">
         <form:errors path="*" cssClass="alert alert-danger"/>
 
-        <div th:if="${param.error}" class="alert alert-danger">
-            Invalid username and password.
-        </div>
+        <c:choose>
+            <c:when test="${param.error}">
+                <div  class="alert alert-danger">
+                    Invalid username and password.
+                </div>
+            </c:when>
+
+        </c:choose>
+
+
 
     </div>
 
