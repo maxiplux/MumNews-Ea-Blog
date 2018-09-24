@@ -4,11 +4,13 @@ import com.mum.news.ea.blog.models.Article;
 import com.mum.news.ea.blog.repositories.ArticleDao;
 import com.mum.news.ea.blog.repositories.CategoryDao;
 import com.mum.news.ea.blog.repositories.UserDao;
+import com.mum.news.ea.blog.storage.StorageService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.hibernate.Hibernate;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.core.io.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,6 +57,14 @@ public class CreateArticleController {
     @Autowired
     private Environment environment;
 
+    private final StorageService storageService;
+
+    @Autowired
+    public CreateArticleController(StorageService storageService) {
+        this.storageService = storageService;
+    }
+
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String newForm(Model model) {
         model.addAttribute("authors",userDao.findAll());
@@ -65,25 +76,25 @@ public class CreateArticleController {
     public String createArticleUpload(@Valid @ModelAttribute Article article,
                                    @RequestParam("file") MultipartFile file, BindingResult result, Model model,
                                    RedirectAttributes redirectAttributes) {
-        try {
-            // Get the file and save it somewhere
-            String imageName = System.currentTimeMillis()+"."+ file.getOriginalFilename().split("\\.")[1];
-            byte[] bytes = file.getBytes();
-            //String path = environment.getProperty("image.path");
-            String filePathDb = environment.getProperty("image.path");
-            Path path = Paths.get(String.format("%s\\%s\\%s",filePath,filePathDb,imageName));
 
 
+        storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-            Files.write(path,bytes);
 
-            article.setImage(String.format("/uploads/%s",imageName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        article.setImage("/images/"+file.getOriginalFilename());
         articleDao.save(article);
         return "redirect:/";
+    }
+
+    @GetMapping("/images/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
 
