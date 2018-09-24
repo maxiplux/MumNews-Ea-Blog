@@ -22,6 +22,15 @@
     padding: 10px;
 }
 
+header span a {
+    background-color: #bf6529;
+    color: white;
+    padding: 5px;
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 5px;
+}
+
 footer{
     background-color: #5fadf9;
     color: white;

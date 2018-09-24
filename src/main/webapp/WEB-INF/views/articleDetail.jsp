@@ -19,15 +19,16 @@
     <layout:put block="content" type="REPLACE">
         <div class="container">
             <div>
-                    ${article.title}
-                <br/>
+
                 <img src="<c:url value="${article.image}"/>" height="200">
+                <br/>
+                <strong>${article.title}</strong>
                 <br/>
                     ${article.category}
                 <br/>
                     ${article.publicationDate}
                 <br>
-                    ${article.author}
+                    ${article.author.firstname}
                 <br>
                     ${article.content}
                 <br>

@@ -54,7 +54,10 @@ public class CreateArticleController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String newForm(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userDao.findByEmail(auth.getName());
         model.addAttribute("cateogories", categoryDao.findAll());
+        model.addAttribute("currentUser", user);
         return "addArticle";
     }
 

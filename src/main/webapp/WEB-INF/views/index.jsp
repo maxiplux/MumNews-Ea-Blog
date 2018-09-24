@@ -48,7 +48,7 @@
                     <div class="article">
                         <img src="<c:url value="${article.image}"/>" height="200">
                         <br/>
-                        <a href="<c:url value="/article/${article.id}" />">${article.title}</a>
+                        <strong><a href="<c:url value="/article/${article.id}" />">${article.title}</a></strong>
                         <br/>
                             ${article.category}
                         <br/>

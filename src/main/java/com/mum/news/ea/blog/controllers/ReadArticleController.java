@@ -67,7 +67,11 @@ public class ReadArticleController {
 
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET)
     public String detail(@PathVariable long id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userDao.findByEmail(auth.getName());
+
         model.addAttribute("article", this.articleDao.findById(id).get());
+        model.addAttribute("currentUser", user);
         return "articleDetail";
     }
 }
