@@ -37,11 +37,21 @@
 
             <br>
             <strong>New Comment:</strong>
-        <form:form method="post" action="/createComment" modelAttribute="comment">
-            <form:textarea cols="100" path="comment" required="required" title="New Comment"/>
-            <br>
-            <input type="submit" value="Add Comment"/>
-        </form:form>
+            <form:form method="post" action="/createComment/${article.id}" modelAttribute="comment">
+                <form:textarea cols="100" path="comment" required="required" title="New Comment"/>
+                <br>
+                <input type="submit" value="Add Comment"/>
+            </form:form>
+            <c:forEach var="com" items="${comments}">
+                <div class="comment">
+                        ${com.comment}
+                    <br>
+                            <span>${com.user.firstname}</span>
+                    <br>
+                            <span>${com.creationDate}</span>
+                    <br>
+                </div>
+            </c:forEach>
         </div>
     </layout:put>
 </layout:extends>

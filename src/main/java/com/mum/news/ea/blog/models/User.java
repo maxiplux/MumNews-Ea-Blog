@@ -1,5 +1,7 @@
 package com.mum.news.ea.blog.models;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 import java.util.Set;
 

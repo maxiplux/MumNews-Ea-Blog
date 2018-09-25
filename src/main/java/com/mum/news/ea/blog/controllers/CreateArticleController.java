@@ -95,13 +95,7 @@ public class CreateArticleController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @RequestMapping(value = {"/createArticle"}, method = RequestMethod.POST)
-    public ModelAndView createUser(@Valid Comment comment, BindingResult bindingResult) {
-        ModelAndView model = new ModelAndView();
 
-        return new ModelAndView("redirect:/");
-
-    }
 }
 
 

@@ -17,21 +17,34 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Comment {
 
     @Id
-    private String id;
+    private String commentId;
+
+    private long seq;
+
     private String comment;
     private Date creationDate = new Date();
-    private long articleId ;
+    private User user;
+
+    private long articleId;
 
 
     public Comment() {
     }
 
-    public String getId() {
-        return id;
+    public long getSeq() {
+        return seq;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSeq(long seq) {
+        this.seq = seq;
+    }
+
+    public String getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(String commentId) {
+        this.commentId = commentId;
     }
 
     public String getComment() {
@@ -58,10 +71,18 @@ public class Comment {
         this.articleId = articleId;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
-                "id='" + id + '\'' +
+                "id='" + commentId + '\'' +
                 ", comment='" + comment + '\'' +
                 ", creationDate=" + creationDate +
                 ", articleId=" + articleId +
