@@ -61,6 +61,9 @@ public class CreateArticleController {
     @Value("${image.path}")
     private String imagefolder;
 
+    @Value("${image.db}")
+    private String imagedb;
+
     @Autowired
     public CreateArticleController(StorageService storageService) {
         this.storageService = storageService;
@@ -108,7 +111,7 @@ public class CreateArticleController {
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        article.setImage(imagePath.toString());
+        article.setImage(String.format("%s/%s",this.imagedb , file.getOriginalFilename()));
 
         article.setPublicationDate(LocalDate.now());
         article.setAuthor(user);
